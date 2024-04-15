@@ -12,4 +12,12 @@ export default defineConfig({
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', ".less"]
   },
+  css: {
+    preprocessorOptions: {
+      less: {
+        // 如果你有全局的 Less 变量文件，可以在这里导入
+        // additionalData: `@import "@/styles/variables";`,
+      },
+    },
+  },
 })
