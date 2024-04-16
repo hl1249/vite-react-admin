@@ -3,20 +3,20 @@
 ### 介绍
 
 这是一个使用VITE、TypeScrip和AntDesign的后台管理项目的模板。
-
-<div style="display:flex;justify-content: center;gap:50px;
-margin-bottom:20px;
-">
+<br/>
+<br/>
+<p align="center">
 <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/badge/pnpm-8.15.5-blue.svg" alt="Version"></a>
-<a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/badge/vite-5.2.8-light.svg" alt="Version"></a>
+<a href="https://www.npmjs.com/package/vue" style="margin:0 50px;"><img src="https://img.shields.io/badge/vite-5.2.8-light.svg" alt="Version"></a>
 <a href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/badge/react-18.2.0-blue.svg" alt="Version"></a>
-</div>
+</p>
 
-✅ 支持css原子化<br/>
-✅ 支持tsx<br/>
+<br/>
 ✅ 支持Antd<br/>
+✅ 支持css原子化<br/>
 ✅ 支持react-router路由<br/>
 ✅ 支持redux状态管理<br/>
+<br/>
 
 ## 安装
 
