@@ -1,26 +1,25 @@
 // import { useEffect, useMemo, useState } from "react";
-import { BrowserRouter ,HashRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import Layout from "@/layout";
 import appConfig from "@/config/index";
-const { routerMode } = appConfig
+const { routerMode } = appConfig;
 
-console.log(import.meta.env)
+console.log(import.meta.env);
 const AppRouter = () => {
-
-    if (routerMode) {
-      return (
-        <BrowserRouter >
+  if (routerMode) {
+    return (
+      <BrowserRouter>
         <Layout />
       </BrowserRouter>
-      )
-    }
-    
-    return (
-      <HashRouter>
-        <Layout />
-      </HashRouter>
     );
-    
-}
+  }
+
+  return (
+    <HashRouter>
+      w shi hash
+      <Layout />
+    </HashRouter>
+  );
+};
 
 export default AppRouter;
