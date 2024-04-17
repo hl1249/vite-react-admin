@@ -1,38 +1,46 @@
-import { Flex, Layout, Button } from "antd";
 import MaxScreen from "./maxScreen";
+import { Flex, Layout, Button } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
-import { useSelector, useDispatch } from 'react-redux';
-import { useContext } from "react";
-import {nameContext} from "@/App"
-const FlexStyle ={
-  height:"100%",
-}
+import { useSelector, useDispatch } from "react-redux";
+
+import CustomSider from "./components/sider";
+
+import { setLayoutIsOpen } from "@/store/action";
+const FlexStyle = {
+  height: "100%",
+};
 
 const DefaultLayout = () => {
-  
-  let tips = useContext(nameContext);
-  interface RootSate{
-    count: number;
-  }
-  console.warn("我拿到App.tsx 中 nameContext的值是",tips)
-
-  const count = useSelector((state:RootSate) => state.count);
   const dispatch = useDispatch();
-  const add = () => {
-    dispatch({ type: 'INCREMENT' });
+
+  interface RootState {
+    layout: {
+      layoutIsOpen: boolean;
+      // 其他 layout 相关的属性
+    };
+    // 其他 reducer 返回的状态属性
   }
+  const layoutIsOpen = useSelector(
+    (state: RootState) => state.layout.layoutIsOpen
+  );
+  const toggleLayout = () => {
+    dispatch(setLayoutIsOpen(!layoutIsOpen));
+  };
+
   return (
     <MaxScreen>
       <Flex style={FlexStyle}>
-      <Sider width="240px">
-        我是左侧菜单栏
-        <Button onClick={add}>点击修改store.count属性{count}</Button>
-      </Sider>
-      <Layout>
-        <Header></Header>
-        <Content className="contetn"></Content>
-        <Footer></Footer>
-      </Layout>
+        <CustomSider width="240px" collapsed={layoutIsOpen}>
+        </CustomSider>
+        <Layout>
+          <Header>
+            <Button onClick={toggleLayout}>
+              点击修改store.layoutIsOpen属性{layoutIsOpen ? "true" : "false"}
+            </Button>
+          </Header>
+          <Content className="contetn"></Content>
+          <Footer></Footer>
+        </Layout>
       </Flex>
     </MaxScreen>
   );

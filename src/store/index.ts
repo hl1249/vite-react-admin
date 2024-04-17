@@ -1,5 +1,5 @@
-import { legacy_createStore as createStore } from 'redux';
-
+import { legacy_createStore as createStore, combineReducers } from 'redux';
+import LayoutReducer from "./layout/reducer";
 const initialState = {
     count: 0
 }
@@ -15,7 +15,14 @@ const counterReducer = (state = initialState, action: { type: any; }) => {
     }
   };
   
+
+  const reducer = combineReducers({
+    layout: LayoutReducer,
+    count:counterReducer
+  });
   // 创建store
-  const store = createStore(counterReducer);
+  const store = createStore(
+    reducer
+  );
   
   export default store;
