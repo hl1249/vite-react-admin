@@ -1,15 +1,10 @@
-import { Button, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import type { MenuProps } from "antd";
 const { Sider } = Layout;
 import { FC, useState } from "react";
 import {
   AppstoreOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
   MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 
@@ -86,7 +81,7 @@ interface CustomSiderProps {
   collapsed: boolean;
 }
 
-const CustomSider: FC<CustomSiderProps> = ({ width, collapsed }) => {
+const CustomSider: FC<CustomSiderProps> = ({ collapsed }) => {
   console.log("组件进行渲染");
   const [stateOpenKeys, setStateOpenKeys] = useState(["2", "23"]);
   const onOpenChange: MenuProps["onOpenChange"] = (openKeys) => {

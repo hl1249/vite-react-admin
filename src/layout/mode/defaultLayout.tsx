@@ -1,6 +1,6 @@
 import MaxScreen from "./maxScreen";
 import { Flex, Layout, Button } from "antd";
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 import { useSelector, useDispatch } from "react-redux";
 
 import CustomSider from "./components/sider";
