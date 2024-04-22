@@ -1,9 +1,11 @@
-import AppRouter from "@/router/appRouter";
-import store from "@/store";
-import { stat } from "fs";
-import { Component ,FC, useState} from "react";
-import { Provider } from "react-redux";
+// import AppRouter from "@/router/appRouter";
+// import store from "@/store";
+import { useState ,  useEffect } from "react";
+import React from "react";
+// import { Provider } from "react-redux";
 
+
+import {Button} from 'antd'
 // function App() {
 //   return (
 //     <>
@@ -13,82 +15,64 @@ import { Provider } from "react-redux";
 //     </>
 //   );
 // }
+function Bpp(){
 
-interface BppProps{
-  name:string;
-  changeName:(name:string)=>void;
-}
-
-interface BppState{}
-
-class Bpp extends Component<BppProps,BppState> {
-  constructor(props: any) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <>
-       <p>我是子元素{this.props.name}</p>
-        <input type="text" onChange={(e)=>{
-          console.log(e)
-          this.props.changeName(e.target.value)
-        }}/>
-      </>
-    );
-  }
-  componentWillUnmount(){
-    console.log("子组件被卸载了")
-  }
-
-   shouldComponentUpdate(per,cur){
-    console.log('当 props 或 state 发生变化时，shouldComponentUpdate() 会在渲染执行之前被调用。',per,cur)
-    return null
-  }
-}
-
-interface AppProps {
-  show: string;
-}
-
-interface AppState {
-  show: boolean;
-  children_name:string;
-}
-
-class App extends Component<AppProps, AppState> {
-  constructor(props: any) {
-    super(props);
-
-    this.state = {
-      show:true,
-      children_name:"子组件-子组件值"
+  useEffect(()=>{
+    console.log("子组件usEffect执行")
+    return () =>{
+      console.log('B组件卸载了')
     }
+  },[])
+  return (
+    <>  
+      <p>Bpp组件</p>
+    </>
+  )
+}
+
+function App(){
+
+ 
+  const myRef = React.useRef<HTMLParagraphElement>(null)
+  const [count, setCount] = useState(0)
+  const [name, setName] = useState('张三')
+
+  useEffect(()=>{
+    // console.log(myRef.current)
+    console.log("count花生变化")
+
+
+  },[count])
+
+  useEffect(()=>{
+    // console.log(myRef.current)
+    console.log("name花生变化")
+
+  },[name])
+
+  useEffect(()=>{
+    // console.log(myRef.current)
+    console.log("name或者count花生变化")
+
+  },[name,count])
+
+  const changeCount = ()=>{
+    setCount(count+1)
   }
 
-  render() {
-
-    let  {show} = this.state
-    const changeShows = ()=>{
-      this.setState({
-        show:!show
-      })
-    }
-
-    const changeName = (name:string)=>{
-      this.setState({
-        children_name:name
-      })
-    }
-
-    
-    return (
-      <>
-       <p onClick={changeShows}>我是父元素</p>
-       {show && <Bpp name={this.state.children_name} changeName={changeName}></Bpp>}
-      </>
-    );
+  const changeName = () => {
+    setName('李四') 
   }
+  return (
+    <>  
+      {/* <p ref={myRef}>我是父组件{count}</p> */}
+      <p>{name}</p>
+      <p>{count}</p>
+      <Button onClick={changeCount}>修改count</Button>
+      <Button onClick={changeName}>修改name</Button>
+     
+    </>
+  )
 }
 
 export default App;
