@@ -38,6 +38,10 @@ function App(){
   const [name, setName] = useState('张三')
 
   useEffect(()=>{
+    console.log("我是第一个useEffect")
+  })
+
+  useEffect(()=>{
     // console.log(myRef.current)
     console.log("count花生变化")
 
@@ -55,6 +59,10 @@ function App(){
     console.log("name或者count花生变化")
 
   },[name,count])
+
+  useEffect(()=>{
+    console.log("我是最后useEffect")
+  })
 
   const changeCount = ()=>{
     setCount(count+1)
