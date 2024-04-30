@@ -11,7 +11,8 @@ const FlexStyle = {
   height: "100%",
 };
 
-const DefaultLayout = () => {
+
+const leftRightLayout = () => {
   const dispatch = useDispatch();
 
   interface RootState {
@@ -30,22 +31,23 @@ const DefaultLayout = () => {
 
   return (
     <MaxScreen>
-      <Flex style={FlexStyle}>
-        <CustomSider width="240px" collapsed={layoutIsOpen}>
-        </CustomSider>
-        <Layout>
-          <Header>
-            <Button onClick={toggleLayout}>
-              点击修改store.layoutIsOpen属性{layoutIsOpen ? "true" : "false"}
-            </Button>
-          </Header>
-          <Content className="contetn">
-            <Main></Main>
-          </Content>
-        </Layout>
+      <Flex vertical={true} style={FlexStyle}>
+        <Header>
+          <Button onClick={toggleLayout}>
+            点击修改store.layoutIsOpen属性{layoutIsOpen ? "true" : "false"}
+          </Button>
+        </Header>
+
+        
+          <Layout>
+            <CustomSider width="240px" collapsed={layoutIsOpen}></CustomSider>
+            <Content className="contetn">
+              <Main></Main>
+            </Content>
+          </Layout>
       </Flex>
     </MaxScreen>
   );
 };
 
-export default DefaultLayout;
+export default leftRightLayout;

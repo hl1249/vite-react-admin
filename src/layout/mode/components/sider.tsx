@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Button } from "antd";
 import type { MenuProps } from "antd";
 const { Sider } = Layout;
 import { FC, useState } from "react";
@@ -7,6 +7,10 @@ import {
   MailOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { setLayoutIsOpen } from "@/store/action";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -51,6 +55,36 @@ const items: MenuItem[] = [
     getItem("Option 1", "31"),
     getItem("Option 2", "32"),
     getItem("Option 3", "33"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
+    getItem("Option 4", "34"),
     getItem("Option 4", "34"),
   ]),
 ];
@@ -106,15 +140,36 @@ const CustomSider: FC<CustomSiderProps> = ({ collapsed }) => {
       setStateOpenKeys(openKeys);
     }
   };
+
+  
+
+  interface RootState {
+    layout: {
+      layoutIsOpen: boolean;
+      // 其他 layout 相关的属性
+    };
+    // 其他 reducer 返回的状态属性
+  }
+  const dispatch = useDispatch();
+
+  const layoutIsOpen = useSelector(
+    (state: RootState) => state.layout.layoutIsOpen
+  );
+  const toggleLayout = () => {
+    dispatch(setLayoutIsOpen(!layoutIsOpen));
+  };
   return (
-    <Sider width={200} collapsed={collapsed}>
+    <Sider className="sider" width={200} collapsed={collapsed}>
       <Menu
+        triggerSubMenuAction="click"
         mode="inline"
         defaultSelectedKeys={["231"]}
         openKeys={stateOpenKeys}
         onOpenChange={onOpenChange}
         items={items}
+        className="sider-content"
       />
+      <Button className="expansion-contraction" onClick={toggleLayout}>{layoutIsOpen ? '展开' : '缩放'}</Button>
     </Sider>
   );
 };

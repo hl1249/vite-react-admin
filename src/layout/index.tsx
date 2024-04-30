@@ -1,8 +1,8 @@
-import { DefaultLayout } from "./mode";
-
+import { DefaultLayout, LeftRightLayout } from "./mode";
+import "./index.less"
 const LayoutContainer = () => {
   return (
-   <DefaultLayout/>
+   <LeftRightLayout/>
   );
 };
 
