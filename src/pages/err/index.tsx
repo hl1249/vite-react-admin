@@ -12,7 +12,7 @@ const Err:React.FC<ErrProps> = ({type,status}) => {
     <Result
     status={status}
     title={type}
-    style={{padding:'180px'}}
+    style={{padding:'120px'}}
     subTitle="对不起，您访问的页面不存在."
     extra={<Button type="primary">返回</Button>}
   />

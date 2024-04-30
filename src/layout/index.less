@@ -3,14 +3,20 @@
 }
 
 .main{
-  overflow-y: auto;
-  height: 100%;
   background-color: white;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.main-content{
+  height: 100%;
+  overflow-y: auto;
 }
 
 .sider{
   width: 200px;
   overflow-y: auto;
+  position: relative;
 }
 
 .sider::-webkit-scrollbar {
@@ -30,4 +36,10 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.setting{
+  position: fixed;
+  top: 20%;
+  right: 0;
 }

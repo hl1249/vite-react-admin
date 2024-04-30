@@ -40,7 +40,10 @@ const DefaultLayout = () => {
             </Button>
           </Header>
           <Content className="contetn">
+          <Flex vertical={true} style={FlexStyle}>
+            <div style={{height: "42px"}}> 芜湖</div>
             <Main></Main>
+      </Flex>
           </Content>
         </Layout>
       </Flex>

@@ -11,7 +11,6 @@ const FlexStyle = {
   height: "100%",
 };
 
-
 const leftRightLayout = () => {
   const dispatch = useDispatch();
 
@@ -38,13 +37,15 @@ const leftRightLayout = () => {
           </Button>
         </Header>
 
-        
-          <Layout>
-            <CustomSider width="240px" collapsed={layoutIsOpen}></CustomSider>
-            <Content className="contetn">
+        <Layout>
+          <CustomSider width="240px" collapsed={layoutIsOpen}></CustomSider>
+          <Content className="contetn">
+            <Flex vertical={true} style={FlexStyle}>
+              <div style={{height: "42px"}}> 芜湖</div>
               <Main></Main>
-            </Content>
-          </Layout>
+            </Flex>
+          </Content>
+        </Layout>
       </Flex>
     </MaxScreen>
   );
